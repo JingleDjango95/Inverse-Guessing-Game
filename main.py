@@ -1,11 +1,20 @@
 import random
 
+def menu():
+    global lst_of_numbers
+    min_number_query = input('What is the minimum number you want me to guess?\n')
+    max_number_query = input('What is the maximum number you want me to guess?\n')
+    if min_number_query >= max_number_query:
+        print("That's an invalid choice, please try again..")
+        menu()
+    else:
+        numbers = range(int(min_number_query), int(max_number_query) + 1)
+        for number in numbers:
+            lst_of_numbers.append(number)
+        guess()
+
 lst_of_numbers = []
 count = 0
-
-numbers = range(1,101)
-for number in numbers:
-    lst_of_numbers.append(number)
 
 def query(random_number):
     global lst_of_numbers
@@ -37,4 +46,4 @@ def guess():
     query(random_number)
 
 
-guess()
+menu()
